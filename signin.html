@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="../../../../favicon.ico">
+
 
   <title>Signin Template for Bootstrap</title>
 
@@ -14,40 +14,125 @@
   <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
   <!-- Custom styles for this template -->
-  <link href="css/signin.css" rel="stylesheet">
-
+  <!-- <link rel="stylesheet" type="text/css" href="css/signin.css" /> -->
   <link rel="stylesheet" type="text/css" href="css/normalize.css" />
   <link rel="stylesheet" type="text/css" href="css/demo.css" />
   <link rel="stylesheet" type="text/css" href="css/component.css" />
+
+  <style>
+    .container {
+      position: relative;
+    }
+
+    .container .cat-link {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      z-index: 100;
+      text-transform: uppercase;
+      /* Forces CSS to treat this as text, not a texture, so no more blurry bugs */
+    }
+
+    .color-block {
+      height: 250px;
+      width: 100%;
+      background-color: green;
+    }
+  </style>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+
+  <script type="text/javascript">
+
+    var userdata;
+    $(document).ready(function () {
+      $("#login").click(function () {
+        $.ajax({
+          type: "get",
+          url: "https://raw.githubusercontent.com/huhuqql/capstone---Edthor/master/asset/user.json",
+          dataType: "json",
+          success: function (result) {
+            userdata = result;
+            login();
+          },
+          error: function () {
+
+          }
+        });
+      });
+    });
+
+    function login() {
+      var username = document.forms["f"]["logname"].value;
+      var password = document.forms["f"]["logpass"].value;
+      var success = 0;
+      showLoading();
+      window.setTimeout("endLoading()", 2000);
+      window.setTimeout("formReset()", 2000);  
+      for (var i = 0; i < userdata.length; i++) {
+        if (username == userdata[i].username && password == userdata[i].password) {
+          window.setTimeout("window.location='index.html'", 2000);
+          success = 1;
+        }
+      }
+
+    }
+
+    function formReset() {
+      document.getElementById("loginForm").reset();
+    }
+
+		function showLoading() {
+			$("#loading").fadeIn(500);
+    }
+    
+    function endLoading(){
+      $("#loading").fadeOut(500);
+    }
+
+  </script>
 </head>
 
 <body class="text-center">
 
+  <!-- <img style="position:relative;margin-left:auto;margin-right:auto;" src="img/loading.gif"> -->
 
   <div class="container demo-1">
+
     <div class="content">
       <div id="large-header" class="large-header">
         <canvas id="demo-canvas"></canvas>
+
         <div class="logo_box">
+
+
           <h3>欢迎你</h3>
-          <form action="#" name="f" method="post">
+          <form id="loginForm" action="#" name="f" method="post">
             <div class="input_outer">
               <span class="u_user"></span>
-              <input name="logname" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户">
+              <input name="logname" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户" required>
+            </div>
+            <div class="container">
+              <div class="cat-link">
+                <img id="loading" style="display:none" src="img/loading.gif">
+              </div>
             </div>
             <div class="input_outer">
               <span class="us_uer"></span>
               <input name="logpass" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="password"
-                placeholder="请输入密码">
+                placeholder="请输入密码" required>
             </div>
             <div class="mb2">
-              <a class="act-but submit" href="javascript:;" style="color: #FFFFFF">登录</a>
+              <a class="act-but submit" id="login" href="javascript:;" style="color: #FFFFFF">登录</a>
             </div>
+
           </form>
         </div>
       </div>
     </div>
   </div>
+
 
   <script src="js/TweenLite.min.js"></script>
   <script src="js/EasePack.min.js"></script>
