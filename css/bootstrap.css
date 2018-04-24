@@ -6075,6 +6075,27 @@ button.bg-light:focus {
   background-color: #dae0e5 !important;
 }
 
+.bg-nice{
+  background-color: #252627 !important;
+}
+
+a.bg-nice:hover, a.bg-nice:focus,
+button.bg-nice:hover,
+button.bg-nice:focus {
+  background-color: #070707 !important;
+}
+
+.bg-black{
+  background-color: #000000 !important;
+}
+
+a.bg-black:hover, a.bg-black:focus,
+button.bg-black:hover,
+button.bg-black:focus {
+  background-color: #000000 !important;
+}
+
+
 .bg-dark {
   background-color: #343a40 !important;
 }

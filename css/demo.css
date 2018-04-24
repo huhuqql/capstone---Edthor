@@ -1,35 +1,35 @@
-*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
-.clearfix:before, .clearfix:after { content: ''; display: table; }
-.clearfix:after { clear: both; }
+body, html { font-size: 100%; 	padding: 0; margin: 0;}
 
-body {
-	background: rgb(0, 0, 0);
-	color: #383a3c;
-	font-weight: 400;
-	font-size: 1em;
-	line-height: 1.25;
-	font-family: 'Raleway', Calibri, Arial, sans-serif;
+/* Reset */
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-a, button {
-	outline: none;
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
 }
 
-a {
-	color: #566473;
-	text-decoration: none;
+.clearfix:after {
+	clear: both;
 }
 
-a:hover, a:focus {
-	color: #34495e;
+body{
+	background: #494A5F;
+	color: #D5D6E2;
+	font-weight: 500;
+	font-size: 1.05em;
+	font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
 }
-
-section {
-	padding: 1em;
-	text-align: center;
-}
-
-p.ref {
-	text-align: center;
-	padding: 2em 1em;
-}
+/*nav*/
+.htmleaf-demo a{color: #fff;text-decoration: none;}
+.htmleaf-demo{width: 100%;padding-bottom: 1.2em;}
+.htmleaf-demo a{display: inline-block;margin: 0.5em;padding: 0.6em 1em;border: 3px solid #fff;font-weight: 700;}
+.htmleaf-demo a:hover{opacity: 0.6;}
+.htmleaf-demo a.current{background:#1d7db1;color: #fff; }
